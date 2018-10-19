@@ -28,7 +28,7 @@ public class PlayerStatsDbPersist {
     @Autowired
     CommonUtilities utilities;
 
-    public void persistPlayeMetarDataForSeason(Parser parser) throws IOException {
+    public void persistPlayeMetaDataForSeason(Parser parser) throws IOException {
         checkErrors(); //This method does nothing
         HashMap<String, String> playerMap = parser.parsePlayerDataForYear();
         Set<String> playerNames = playerMap.keySet();

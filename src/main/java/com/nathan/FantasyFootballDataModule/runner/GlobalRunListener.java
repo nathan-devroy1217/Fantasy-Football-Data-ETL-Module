@@ -7,6 +7,7 @@ import com.nathan.FantasyFootballDataModule.util.URIBuilder;
 import com.nathan.FantasyFootballDataModule.util.mock.FantasyTeamMock;
 import com.nathan.FantasyFootballDataModule.util.mock.FantasyTeamYearDataMock;
 import com.nathan.FantasyFootballDataModule.util.mock.PlayerMock;
+import com.nathan.FantasyFootballDataModule.util.persistence.FantasyTeamDbPersist;
 import com.nathan.FantasyFootballDataModule.util.persistence.PlayerStatsDbPersist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -40,6 +41,9 @@ class GlobalRunListener implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     PlayerStatsDbPersist playerStatsDbPersist;
 
+    @Autowired
+    FantasyTeamDbPersist fantasyTeamDbPersist;
+
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
@@ -48,11 +52,12 @@ class GlobalRunListener implements ApplicationListener<ApplicationReadyEvent> {
         //System.out.println(builder.buildNflStatsUri(String.valueOf(1), String.valueOf(2018), "Passing"));
 
         parser.setWeek("6");
-        parser.setSeason("2012");
+        parser.setSeason("2018");
         parser.setStatsMetric(FantasyConstants.FANTASY_TEAM_INGEST);
         try {
             parser.setSourceUrl();
-            HashMap<String, String> myMap = parser.parseFantasyTeamData();
+            fantasyTeamDbPersist.persistFantasyTeamDataForSeason(parser);
+
             //playerStatsDbPersist.persistPlayerStatsInBatch(parser);
         } catch (InvalidInputException e) {
             e.printStackTrace();

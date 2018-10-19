@@ -23,7 +23,8 @@ public class FantasyTeamDaoImpl implements IFantasyTeamDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    final String INSERT_QUERY = "insert into fantasyTeam(teamName, owner) values (:teamName, :owner)";
+    final String INSERT_QUERY = "insert into fantasyTeam(teamName, owner) values (:teamName, :owner) " +
+            "on duplicate key update teamName = :teamName, owner = :owner";
 
     @Override
     public List<FantasyTeam> getFantasyTeams() {
