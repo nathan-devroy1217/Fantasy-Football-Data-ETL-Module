@@ -15,6 +15,7 @@ com/nathan/FantasyFootballDataModule/dao/IRosterWeekDao.class
 com/nathan/FantasyFootballDataModule/dao/impl/DraftRoundDao.class
 com/nathan/FantasyFootballDataModule/service/impl/PlayerYearService.class
 com/nathan/FantasyFootballDataModule/model/Draft.class
+com/nathan/FantasyFootballDataModule/util/persistence/FantasyTeamDbPersist.class
 com/nathan/FantasyFootballDataModule/dao/impl/RosterWeekDaoImpl.class
 com/nathan/FantasyFootballDataModule/Exception/InvalidInputException.class
 com/nathan/FantasyFootballDataModule/service/impl/RosterPlayerService.class

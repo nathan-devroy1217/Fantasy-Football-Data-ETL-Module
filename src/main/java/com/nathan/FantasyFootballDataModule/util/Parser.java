@@ -221,7 +221,21 @@ public class Parser {
         for (Element element : elements) {
             Elements rows = element.getElementsByTag("tr");
             for (Element row : rows) {
-                System.out.println(row.text());
+                String line = row.text();
+                if(line.matches("^[0-9].*")) {
+                    String[] splitVals = line.split("Park");
+                    String[] splitTeamName = splitVals[0].split(" ");
+                    String[] splitParticipant = splitVals[1].split(" ");
+                    String name = "";
+                    String participant = "";
+                    for (int index = 2; index < splitTeamName.length - 1; index++) {
+                        name = name.concat(splitTeamName[index] + " ");
+                    }
+                    for (int index = 1; index < splitParticipant.length - 3; index++) {
+                        participant = participant.concat(splitParticipant[index] + " ");
+                    }
+                    fantasyTeamMap.put(participant  + "-" + name, participant + name);
+                }
             }
         }
         return fantasyTeamMap;

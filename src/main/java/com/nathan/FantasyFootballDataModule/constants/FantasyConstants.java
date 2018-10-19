@@ -2,6 +2,10 @@ package com.nathan.FantasyFootballDataModule.constants;
 
 public class FantasyConstants {
 
+    //League Conf Names
+    public static final String CONF_1 = "Como";
+    public static final String CONF_2 = "Merriam";
+
     //Position key constants
     public static final int QB_POSITION_KEY = 1;
     public static final int RB_POSITION_KEY = 2;
